@@ -1,0 +1,212 @@
+let cardimg = ["chihiro","monoki","kiki","sophie","arrietty","tales","sheeta","nausica","chihiro","monoki","kiki","sophie","arrietty","tales","sheeta","nausica"];
+let card = document.querySelectorAll(".card");   //cards Nodelist
+let cards = [];                                 //To
+for(let i = 0; i <= cardimg.length - 1; i++){  //cards Array
+    cards.push(card[i]);
+};
+
+//got the inspiration for this func from this channel "All Things JavaScript, LLC"
+function shuffle(array) {  
+    let temp,randomIndex;
+    for(let i = 0; i <= array.length - 1; i++){
+        randomIndex = Math.floor(Math.random() * (i + 1));
+        temp = array[i];
+        array[i] = array[randomIndex];
+        array[randomIndex] = temp;
+    }
+    return array;
+};
+
+//Each time the cards will mixed ;)
+let cardsMixer = function(){
+    shuffle(cardimg);
+        for(let i = 0; i <= cards.length - 1; i++){
+            cards[i].innerHTML = `<div class="${cardimg[i]}" ></div>`;
+        }
+};
+ 
+//Add event listener to the deck
+let deck = document.getElementsByClassName("deck");
+let openCards = [];
+let c = 0;
+
+//for the popUp message when the player wins ;) I got the inspiration for the PopUp message from the channel "DarkCode"
+function pop(){
+    
+    if((matchs === 8) && ( c === 0)){
+        let congrats = document.querySelector(".congrats");
+        if(stars.length === 1){
+            congrats.innerHTML = `<h2>Congratulations</h2>
+            <img src="img/star2.png" alt="star">`;
+        }
+        if(stars.length === 2){
+            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
+        }
+        if(stars.length === 3){
+            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
+        }
+        if(stars.length === 4){
+            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">
+            <img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
+        }
+        if(stars.length === 5){
+            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">
+            <img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
+        }
+        
+        congrats.innerHTML += `<h3> you won in ${min} min and ${sec} sec with ${moves} moves !</h3> <a class="close" onclick="unpop()">Close</a>
+        <a class="replay" onclick="replay()">Play Again</a>`;
+
+        congrats.style.display = "block";
+        c = 1;
+    }
+}
+
+let closePop = document.querySelector(".close");
+let replayBtn = document.querySelector(".replay");
+
+//the func that upPop the message
+function unpop(){
+    document.querySelector(".congrats").style.display = "none";
+}
+
+//the func that restart the game when user wants to play more after winning
+function replay(){
+    unpop();
+    rep();
+}
+
+
+//the func that sets the timer 
+let sec = 0;
+let min = 0;
+let counter = setInterval(function secs(){
+    if(sec <= 58){
+        sec += 1;
+        timeSpan.innerHTML = `Timer: ${min}:${sec}`;}
+    else {
+        sec = 0;
+        min += 1;
+        timeSpan.innerHTML = `Timer: ${min}:${sec}`;}
+        
+    }, 1000);
+
+let incorrectTry = 0;
+let matchs = 0;
+let moves = 0;
+let moveSpan = document.querySelector(".moves");
+let timeSpan = document.querySelector(".timer");
+let stars = document.getElementsByClassName("fa fa-star");
+let starsContainer = document.querySelector(".stars");
+
+//the func that starts a Game and sets everything to the beginning
+let startGame = function game(){
+    cardsMixer();
+        moves = 0;
+        matchs = 0;
+        moveSpan.innerHTML = `${moves}`;
+        sec = 0;
+        min = 0;
+        timeSpan.innerHTML = `Timer: ${min}:${sec}`;
+        starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>
+            <li><i class="fa fa-star"></i></li>`;
+}
+
+startGame();
+
+//adding a Eventlistener to the whole grid 
+deck[0].addEventListener("click", function(e){
+    if((e.target.classList.contains("card")) && (!e.target.classList.contains("open")) && (!e.target.classList.contains("match"))){
+        if(openCards.length <= 1 ){
+            e.target.classList.add("open");
+            openCards.push(e.target); //adds the clicked card to the openCards Array to limit and control the open cards
+
+            setTimeout(function(){
+                if((openCards.length === 2) && ( openCards[0].innerHTML === openCards[1].innerHTML )){console.log("Yaay:)")
+                   for(let i=0; i <= 1; i++){
+                       openCards[i].classList.add("match");
+                       openCards[i].classList.remove("open");} 
+                       matchs += 1;
+                       moves += 1;
+                       moveSpan.innerHTML = `${moves}`;
+                       openCards = [];     //make sure to empty this array cuz the cards are no longer opend it is matched
+                       if(matchs === 8){
+                           clearInterval(counter); //if the matchs=8 (winning) kill the timer (stop it)
+                            pop();                //popUp the congrats message
+                        }
+                    }
+                },1000);
+
+            setTimeout(function(){
+                if((openCards.length === 2) && ( openCards[0].innerHTML != openCards[1].innerHTML )){
+                    for(let i=0; i <= 1; i++){
+                      openCards[i].classList.remove("open");
+                       }
+                     
+                    moves += 1;
+                    incorrectTry += 1;
+                    moveSpan.innerHTML = `${moves}`;
+                    openCards = [];   //make sure to empty this array cuz the cards are no longer opend
+                        
+                    if(incorrectTry === 3){
+                        stars[4].remove();
+                        starsContainer.innerHTML +=  "<i class='far fa-star'></i>"; 
+                     }
+
+                    if(incorrectTry === 5){
+                        stars[3].remove();
+                        starsContainer.innerHTML +=  "<i class='far fa-star'></i>"; 
+                    }
+
+                     if(incorrectTry === 7){
+                        stars[2].remove();
+                        starsContainer.innerHTML +=  "<i class='far fa-star'></i>"; 
+                    }
+
+                     if(incorrectTry === 9){
+                        stars[1].remove();
+                        starsContainer.innerHTML +=  "<i class='far fa-star'></i>"; 
+                    }
+                }
+        },2000);
+            
+            setTimeout(function(){  //do not do anything when the opened cards are just one, just till me ;)
+                if(openCards.length === 1){
+                    console.log("Im 1");}
+            },2000);
+        }
+    };
+}); 
+
+
+//the func that will called when the restart symbol is clicked and it is starts every thing from the beginning
+function rep(){
+    for(let i = 0; i <= cards.length - 1; i++){
+        card[i].classList.remove("match");
+        card[i].classList.remove("open");}; 
+       
+        if(matchs === 8){
+            counter = setInterval(function secs(){
+                if(sec <= 58){
+                    sec += 1;
+                    timeSpan.innerHTML = `Timer: ${min}:${sec}`;}
+                else {
+                    sec = 0;
+                    min += 1;
+                    timeSpan.innerHTML = `Timer: ${min}:${sec}`;
+                }
+              }, 1000);}
+  
+         startGame();
+         
+  };
+ 
+//add an Eventlistener on the resart symbol 
+let repeat = document.querySelector(".repeat");
+repeat.addEventListener("click", rep);
+
+
+

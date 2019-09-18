@@ -1,0 +1,688 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/wall.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.moves {
+    margin-left: 15px;
+}
+
+.timer {
+    margin-left: 22px;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-weight: 300;
+    color:whitesmoke;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #dbdbdb 0%, #8effae 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(190, 190, 190, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/wall.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+} 
+
+.deck .card .chihiro {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/chihiro.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.deck .card .monoki {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/monoki.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.deck .card .kiki {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/kiki.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.deck .card .sophie {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/sophie.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.deck .card .arrietty {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/arrietty.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.deck .card .tales {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/tales.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.deck .card .sheeta {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/sheeta.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.deck .card .nausica {
+    height: 125px;
+    width: 125px;
+    background: #ffffff url('../img/nausica.png');
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.deck .card.open {
+    transform: rotateY(180deg);
+}
+
+.deck .card.show {
+    /* transform: rotateY(180deg);
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    backface-visibility: hidden;
+    perspective: 1000px; */
+}
+
+/* @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  } */
+
+.deck .card.match {
+   transform: rotateY(180deg);
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-part {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+    color:whitesmoke;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.score-part .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-part .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-part .repeat {
+    float: right;
+    cursor: pointer;
+}
+
+.congrats {
+    width: 500px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 0 20px black;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    padding: 10px;
+    text-align: center;
+    display: none;
+}
+
+.close {
+    font-size: 15px;
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: #5dad8c;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.replay {
+    font-size: 15px;
+    color: white;
+    padding: 10px 30px;
+    cursor: pointer;
+    background: #5dad8c;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+@media screen and (max-width: 700px){
+    .deck {
+        height: 600px;
+        width: 600px;
+    }
+
+    .deck .card {
+        height: 112px;
+        width: 112px;
+
+    }
+
+    .deck .card .nausica {
+        height: 112px;
+        width: 112px;
+        background: #ffffff url('../img/nausica112.png');   
+    }
+
+    .deck .card .arrietty {
+        height: 112px;
+        width: 112px;
+        background: #ffffff url('../img/arrietty112.png');   
+    }
+
+    .deck .card .chihiro {
+        height: 112px;
+        width: 112px;
+        background: #ffffff url('../img/chihiro112.png');   
+    }
+
+    .deck .card .sophie {
+        height: 112px;
+        width: 112px;
+        background: #ffffff url('../img/sophie112.png');   
+    }
+
+    .deck .card .tales {
+        height: 112px;
+        width: 112px;
+        background: #ffffff url('../img/tales112.png');   
+    }
+
+    .deck .card .monoki {
+        height: 112px;
+        width: 112px;
+        background: #ffffff url('../img/monoki112.png');   
+    }
+
+    .deck .card .sheeta {
+        height: 112px;
+        width: 112px;
+        background: #ffffff url('../img/sheeta112.png');   
+    }
+
+    .deck .card .kiki {
+        height: 112px;
+        width: 112px;
+        background: #ffffff url('../img/kiki112.png');   
+    }
+}
+
+@media screen and (max-width: 650px){
+    .deck {
+        height: 560px;
+        width: 560px;
+    }
+
+    .deck .card {
+        height: 104px;
+        width: 104px;
+        
+    }
+
+    .deck .card .nausica {
+        height: 104px;
+        width: 104px;
+        background: #ffffff url('../img/nausica104.png');   
+    }
+
+    .deck .card .chihiro {
+        height: 104px;
+        width: 104px;
+        background: #ffffff url('../img/chihiro104.png');   
+    }
+
+    .deck .card .arrietty {
+        height: 104px;
+        width: 104px;
+        background: #ffffff url('../img/arrietty104.png');   
+    }
+
+    .deck .card .sophie {
+        height: 104px;
+        width: 104px;
+        background: #ffffff url('../img/sophie104.png');   
+    }
+
+    .deck .card .sheeta {
+        height: 104px;
+        width: 104px;
+        background: #ffffff url('../img/sheeta104.png');   
+    }
+
+    .deck .card .tales {
+        height: 104px;
+        width: 104px;
+        background: #ffffff url('../img/tales104.png');   
+    }
+
+    .deck .card .monoki {
+        height: 104px;
+        width: 104px;
+        background: #ffffff url('../img/monoki104.png');   
+    }
+
+    .deck .card .kiki {
+        height: 104px;
+        width: 104px;
+        background: #ffffff url('../img/kiki104.png');   
+    }
+}
+
+@media screen and (max-width: 600px){
+    .deck {
+        height: 500px;
+        width: 500px;
+        min-height: 0;
+    }
+
+    .deck .card {
+        height: 99px;
+        width: 99px;
+        
+    }
+
+    
+    .deck .card .nausica {
+        height: 99px;
+        width: 99px;
+        background: #ffffff url('../img/nausica104.png');   
+    }
+
+    .deck .card .chihiro {
+        height: 99px;
+        width: 99px;
+        background: #ffffff url('../img/chihiro104.png');   
+    }
+
+    .deck .card .arrietty {
+        height: 99px;
+        width: 99px;
+        background: #ffffff url('../img/arrietty104.png');   
+    }
+
+    .deck .card .sophie {
+        height: 99px;
+        width: 99px;
+        background: #ffffff url('../img/sophie104.png');   
+    }
+
+    .deck .card .sheeta {
+        height: 99px;
+        width: 99px;
+        background: #ffffff url('../img/sheeta104.png');   
+    }
+
+    .deck .card .tales {
+        height: 99px;
+        width: 99px;
+        background: #ffffff url('../img/tales104.png');   
+    }
+
+    .deck .card .monoki {
+        height: 99px;
+        width: 99px;
+        background: #ffffff url('../img/monoki104.png');   
+    }
+
+    .deck .card .kiki {
+        height: 99px;
+        width: 99px;
+        background: #ffffff url('../img/kiki104.png');   
+    }
+}
+
+@media screen and (max-width: 560px){
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .deck {
+        height: 450px;
+        width: 450px;
+        
+    }
+
+    .deck .card {
+        height: 85px;
+        width: 85px;
+        
+    }
+
+    .deck .card .nausica {
+        height: 85px;
+        width: 85px;
+        background: #ffffff url('../img/nausica85.png');   
+    }
+
+    .deck .card .monoki {
+        height: 85px;
+        width: 85px;
+        background: #ffffff url('../img/monoki85.png');   
+    }
+
+    .deck .card .tales {
+        height: 85px;
+        width: 85px;
+        background: #ffffff url('../img/tales85.png');   
+    }
+
+    .deck .card .sheeta {
+        height: 85px;
+        width: 85px;
+        background: #ffffff url('../img/sheeta85.png');   
+    }
+
+    .deck .card .chihiro {
+        height: 85px;
+        width: 85px;
+        background: #ffffff url('../img/chihiro85.png');   
+    }
+
+    .deck .card .arrietty {
+        height: 85px;
+        width: 85px;
+        background: #ffffff url('../img/arrietty85.png');   
+    }
+
+    .deck .card .sophie {
+        height: 85px;
+        width: 85px;
+        background: #ffffff url('../img/sophie85.png');   
+    }
+
+    .deck .card .kiki {
+        height: 85px;
+        width: 85px;
+        background: #ffffff url('../img/kiki85.png');   
+    }
+}
+
+@media screen and (max-width: 470px){
+    h1 {
+        font-size: 1.3em;
+    }
+
+    .deck {
+        height: 400px;
+        width: 400px;
+        
+    }
+
+    .deck .card {
+        height: 76px;
+        width: 76px;
+        
+    }
+
+    .deck .card .tales {
+        height: 76px;
+        width: 76px;
+        background: #ffffff url('../img/tales76.png');   
+    }
+
+    .deck .card .monoki {
+        height: 76px;
+        width: 76px;
+        background: #ffffff url('../img/monoki76.png');   
+    }
+
+    .deck .card .chihiro {
+        height: 76px;
+        width: 76px;
+        background: #ffffff url('../img/chihiro76.png');   
+    }
+
+    .deck .card .sheeta {
+        height: 76px;
+        width: 76px;
+        background: #ffffff url('../img/sheeta76.png');   
+    }
+
+    .deck .card .arrietty {
+        height: 76px;
+        width: 76px;
+        background: #ffffff url('../img/arrietty76.png');   
+    }
+
+    .deck .card .sophie {
+        height: 76px;
+        width: 76px;
+        background: #ffffff url('../img/sophie76.png');   
+    }
+
+    .deck .card .nausica {
+        height: 76px;
+        width: 76px;
+        background: #ffffff url('../img/nausica76.png');   
+    }
+
+    .deck .card .kiki {
+        height: 76px;
+        width: 76px;
+        background: #ffffff url('../img/kiki76.png');   
+    }
+
+}
+
+@media screen and (max-width: 426px){
+    h1 {
+        font-size: 0.9em;
+    }
+
+    .deck {
+        height: 350px;
+        width:350px;
+        
+    }
+
+    .deck .card {
+        height: 66px;
+        width: 66px;
+        
+    }
+
+    .deck .card .chihiro {
+        height: 66px;
+        width: 66px;
+        background: #ffffff url('../img/chihiro66.png');   
+    }
+
+    .deck .card .arrietty {
+        height: 66px;
+        width: 66px;
+        background: #ffffff url('../img/arrietty66.png');   
+    }
+
+    .deck .card .monoki {
+        height: 66px;
+        width: 66px;
+        background: #ffffff url('../img/monoki66.png');   
+    }
+
+    .deck .card .tales {
+        height: 66px;
+        width: 66px;
+        background: #ffffff url('../img/tales66.png');   
+    }
+
+    .deck .card .sophie {
+        height: 66px;
+        width: 66px;
+        background: #ffffff url('../img/sophie66.png');   
+    }
+
+    .deck .card .sheeta {
+        height: 66px;
+        width: 66px;
+        background: #ffffff url('../img/sheeta66.png');   
+    }
+
+    .deck .card .nausica {
+        height: 66px;
+        width: 66px;
+        background: #ffffff url('../img/nausica66.png');   
+    }
+
+    .deck .card .kiki {
+        height: 66px;
+        width: 66px;
+        background: #ffffff url('../img/kiki66.png');   
+    }
+
+}

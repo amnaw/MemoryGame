@@ -13,7 +13,7 @@ The game board consists of sixteen cards in a grid.
 * If the cards do not match, both cards are flipped face down.
 * The game ends once all cards have been correctly matched.
 
-###### the description is from Udacity
+####### the description is from Udacity
 
 ## Want to Play? ;)
 

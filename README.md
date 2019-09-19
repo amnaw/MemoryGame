@@ -13,10 +13,16 @@ The game board consists of sixteen cards in a grid.
 * If the cards do not match, both cards are flipped face down.
 * The game ends once all cards have been correctly matched.
 
+<<<<<<< HEAD
 
 ###### the description is from Udacity
 
 
+||||||| merged common ancestors
+=======
+###### the description is from Udacity
+
+>>>>>>> 53112a804c57279ddfcecc7cccd4590522595147
 ## Want to Play? ;)
 
 You have to download the project and open the `index.html` file in the browser .

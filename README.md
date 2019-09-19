@@ -33,5 +33,6 @@ I styled the game with the _Studio Ghibli_ characters
 * Therru
 
 ## Dependencies:
-I have used Font-Awesom to get the stars icons at the score panel.\n
+I have used Font-Awesom to get the stars icons at the score panel.
+
 Also used Google-Fonts to style the game's header.

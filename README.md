@@ -1,6 +1,6 @@
 # Memory Game
 
-This Project is second project from Udacity Front End Nandodegree program.
+This Project is the second project from Udacity Front End Nandodegree program.
 and it is all about demonstrating my skills of JavaScript. 
 It’s a complete browser-based card matching game (also known as Concentration). But this isn’t just any memory game! It’s a shnazzy, well-designed, feature-packed memory game!
 The game board consists of sixteen cards in a grid.
@@ -12,6 +12,10 @@ The game board consists of sixteen cards in a grid.
 * If the cards match, both cards stay flipped over.
 * If the cards do not match, both cards are flipped face down.
 * The game ends once all cards have been correctly matched.
+
+
+###### the description is from Udacity
+
 
 ## Want to Play? ;)
 
@@ -28,3 +32,7 @@ I styled the game with the _Studio Ghibli_ characters
 * Nausica
 * Mononoke
 * Therru
+
+## Dependencies:
+I have used Font-Awesom to get the stars icons at the score panel. 
+Also used Google-Fonts to style the game's header.

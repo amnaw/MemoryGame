@@ -1,4 +1,5 @@
-let cardimg = ["chihiro","monoki","kiki","sophie","arrietty","tales","sheeta","nausica","chihiro","monoki","kiki","sophie","arrietty","tales","sheeta","nausica"];
+let cardimg = ["chihiro","monoki","kiki","sophie","arrietty","tales","sheeta","nausica"];
+cardimg = cardimg.concat(cardimg);
 let card = document.querySelectorAll(".card");   //cards Nodelist
 let cards = [];                                 //To
 for(let i = 0; i <= cardimg.length - 1; i++){  //cards Array
@@ -30,7 +31,9 @@ let deck = document.getElementsByClassName("deck");
 let openCards = [];
 let c = 0;
 
-//for the popUp message when the player wins ;) I got the inspiration for the PopUp message from the channel "DarkCode"
+/* this is for the popUp message when the player wins ;) I got the inspiration for the PopUp message
+ * from the channel "DarkCode"
+ */
 function pop(){
     
     if((matchs === 8) && ( c === 0)){
@@ -40,21 +43,27 @@ function pop(){
             <img src="img/star2.png" alt="star">`;
         }
         if(stars.length === 2){
-            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
+            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star">
+            <img src="img/star2.png" alt="star">`;
         }
         if(stars.length === 3){
-            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
+            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star">
+            <img src="img/star2.png" alt="star">
+            <img src="img/star2.png" alt="star">`;
         }
         if(stars.length === 4){
-            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">
+            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star">
+            <img src="img/star2.png" alt="star">
             <img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
         }
         if(stars.length === 5){
-            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">
-            <img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
+            congrats.innerHTML = `<h2>Congratulations</h2><img src="img/star2.png" alt="star">
+            <img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">
+            <img src="img/star2.png" alt="star"><img src="img/star2.png" alt="star">`;
         }
         
-        congrats.innerHTML += `<h3> you won in ${min} min and ${sec} sec with ${moves} moves !</h3> <a class="close" onclick="unpop()">Close</a>
+        congrats.innerHTML += `<h3> You won in ${min} min and ${sec} sec with ${moves} moves !
+        </h3> <a class="close" onclick="unpop()">Close</a>
         <a class="replay" onclick="replay()">Play Again</a>`;
 
         congrats.style.display = "block";
@@ -187,6 +196,7 @@ function rep(){
     for(let i = 0; i <= cards.length - 1; i++){
         card[i].classList.remove("match");
         card[i].classList.remove("open");}; 
+        openCards = [];
        
         if(matchs === 8){
             counter = setInterval(function secs(){

@@ -1,5 +1,5 @@
 let cardimg = ["chihiro","monoki","kiki","sophie","arrietty","tales","sheeta","nausica"];
-cardimg = cardimg.concat(cardimg);
+cardimg = cardimg.concat(cardimg);                //double the cardimg array
 let card = document.querySelectorAll(".card");   //cards Nodelist
 let cards = [];                                 //To
 for(let i = 0; i <= cardimg.length - 1; i++){  //cards Array
@@ -196,8 +196,9 @@ function rep(){
     for(let i = 0; i <= cards.length - 1; i++){
         card[i].classList.remove("match");
         card[i].classList.remove("open");}; 
-        openCards = [];
-       
+        openCards = [];                              //fix The restart button bug,it occurs cuz the openCards array
+                                                    // isn't cleared on restart so it retains the first card click value
+                                                   // in it even after restart.
         if(matchs === 8){
             counter = setInterval(function secs(){
                 if(sec <= 58){

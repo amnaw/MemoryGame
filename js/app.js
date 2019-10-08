@@ -6,7 +6,7 @@ for(let i = 0; i <= cardimg.length - 1; i++){  //cards Array
     cards.push(card[i]);
 };
 
-//got the inspiration for this func from this channel "All Things JavaScript, LLC"
+//got the inspiration for this func from this channel "All Things JavaScript, LLC".
 function shuffle(array) {  
     let temp,randomIndex;
     for(let i = 0; i <= array.length - 1; i++){

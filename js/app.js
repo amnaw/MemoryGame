@@ -29,7 +29,7 @@ let cardsMixer = function(){
 //Add event listener to the deck
 let deck = document.getElementsByClassName("deck");
 let openCards = [];
-let c = 0;
+let c = 0; //to prevent displaying pop msg after close
 
 /* this is for the popUp message when the player wins ;) I got the inspiration for the PopUp message
  * from the channel "DarkCode"

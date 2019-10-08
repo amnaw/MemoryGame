@@ -2,7 +2,7 @@
 
 This Project is the second project from Udacity Front-End Web devoloper Nandodegree program.
 and it is all about demonstrating my skills of JavaScript. 
-It’s a complete browser-based card matching game (also known as Concentration). But this isn’t just any memory game! It’s a shnazzy, well-designed, feature-packed memory game!
+It is a complete browser-based card matching game (also known as Concentration). But this isn’t just any memory game! It’s a shnazzy, well-designed, feature-packed memory game!
 The game board consists of sixteen cards in a grid.
 
 ### Each turn:

@@ -18,7 +18,8 @@ The game board consists of sixteen cards in a grid.
 
 ## Want to Play? ;)
 
-You have to download the project and open the `index.html` file in the browser .
+You can play here : https://amnaw.github.io/MemoryGame/
+Or You have to download the project and open the `index.html` file in the browser .
 
 ### About the characters:
 

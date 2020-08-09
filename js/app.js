@@ -298,8 +298,12 @@ parent.addEventListener("click", function(e) {
 
 for(var i = 0; i <= cards.length - 1; i++){
     cards[i].addEventListener("click", function(e){
-        console.log("zzzzzzzz")
+        console.log("ffffff")
+        const child = e.target.matches(".card"); //true or false
+     if (child) {
         e.target.classList.add("open")
+     }
+        
     })
     ////
 }

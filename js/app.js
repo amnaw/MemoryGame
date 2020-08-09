@@ -226,10 +226,14 @@ deck[0].addEventListener("click", function(e){
     };
 }); */
 
-//mobile listeners
-
-cardsBoard.addEventListener('click', function(e){
-    if((e.target.classList.contains("card")) && (!e.target.classList.contains("open")) && (!e.target.classList.contains("match"))){
+//mobile listeners..
+const parent = document.querySelector(".deck");
+parent.addEventListener("click", function(e) {
+     const child = e.target.matches(".card"); //true or false
+     if (child) { // If child is click
+     // Your code here
+     console.log("babay click")
+     if((e.target.classList.contains("card")) && (!e.target.classList.contains("open")) && (!e.target.classList.contains("match"))){
         if(openCards.length <= 1 ){
             e.target.classList.add("open");
             openCards.push(e.target); //adds the clicked card to the openCards Array to limit and control the open cards
@@ -289,13 +293,7 @@ cardsBoard.addEventListener('click', function(e){
             },2000);
         }
     };
-});
-
-//mobile listeners
-for(var i = 0; i <= cards.length - 1; i++){
-    //cards[i].addEventListener("click", ) 
-    
-}
+}});
 
 
 

@@ -227,6 +227,7 @@ deck[0].addEventListener("click", function(e){
 }); */
 
 //mobile listeners..
+/*
 const parent = document.querySelector(".deck");
 parent.addEventListener("click", function(e) {
      const child = e.target.matches(".card"); //true or false
@@ -293,9 +294,15 @@ parent.addEventListener("click", function(e) {
             },2000);
         }
     };
-}});
+}});*/
 
-
+for(var i = 0; i <= cards.length - 1; i++){
+    cards[i].addEventListener("click", function(e){
+        console.log("zzzzzzzz")
+        e.target.classList.add("open")
+    })
+    
+}
 
 //the func that will called when the restart symbol is clicked and it is starts every thing from the beginning
 function rep(){

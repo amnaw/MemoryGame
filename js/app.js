@@ -226,7 +226,7 @@ deck[0].addEventListener("click", function(e){
     };
 }); */
 
-//mobile listeners
+//mobile listeners..
 const parent = document.querySelector(".deck");
 parent.addEventListener("click", function(e) {
      const child = e.target.matches(".card"); //true or false

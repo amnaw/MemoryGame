@@ -57,8 +57,8 @@ var makeSureAllClosed = function(){
         return 1;
 }
 
-//Add event listener to the deck
-var deck = document.getElementsByClassName("deck");
+//Add event listener to the deck..
+var deck = document.querySelector(".deck");
 var openCards = [];
 var c = 0; //to prevent displaying pop msg after close
 

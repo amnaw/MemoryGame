@@ -301,7 +301,7 @@ for(var i = 0; i <= cards.length - 1; i++){
         console.log("zzzzzzzz")
         e.target.classList.add("open")
     })
-    
+    ////
 }
 
 //the func that will called when the restart symbol is clicked and it is starts every thing from the beginning

@@ -162,7 +162,7 @@ var startGame = function game(){
 startGame();
 
 //adding a Eventlistener to the whole grid 
-/*
+
 deck[0].addEventListener("click", function(e){
     if((e.target.classList.contains("card")) && (!e.target.classList.contains("open")) && (!e.target.classList.contains("match"))){
         if(openCards.length <= 1 ){
@@ -224,7 +224,7 @@ deck[0].addEventListener("click", function(e){
             },2000);
         }
     };
-}); */
+}); 
 
 //mobile listeners..
 /*
@@ -296,7 +296,7 @@ parent.addEventListener("click", function(e) {
     };
 }});*/
 
-for(var i = 0; i <= cards.length - 1; i++){
+/*for(var i = 0; i <= cards.length - 1; i++){
     cards[i].addEventListener("click", function(e){
         console.log("ffffff")
         const child = e.target.matches(".card"); //true or false
@@ -306,7 +306,7 @@ for(var i = 0; i <= cards.length - 1; i++){
         
     })
     ////
-}
+}*/
 
 //the func that will called when the restart symbol is clicked and it is starts every thing from the beginning
 function rep(){

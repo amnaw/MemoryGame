@@ -5,6 +5,8 @@ var cards = [];                                 //To
 for(var i = 0; i <= cardimg.length - 1; i++){  //cards Array
     cards.push(card[i]);
 };
+// cards board
+const cardsBoard = document.querySelector('#cards-board');
 
 //got the inspiration for this func from this channel "All Things JavaScript, LLC"..
 function shuffle(array) {  
@@ -32,11 +34,11 @@ var cardsMixer = function(){
         cards[i].classList.remove("open"); 
         
     }
-       setTimeout(waitThenFlip,1000)
+       setTimeout(waitThenShuffle, 1000)
        
     };
 
-var waitThenFlip = function(){
+var waitThenShuffle = function(){
     shuffle(cardimg);
         
         //openCards=[];
@@ -160,6 +162,7 @@ var startGame = function game(){
 startGame();
 
 //adding a Eventlistener to the whole grid 
+/*
 deck[0].addEventListener("click", function(e){
     if((e.target.classList.contains("card")) && (!e.target.classList.contains("open")) && (!e.target.classList.contains("match"))){
         if(openCards.length <= 1 ){
@@ -221,7 +224,79 @@ deck[0].addEventListener("click", function(e){
             },2000);
         }
     };
-}); 
+}); */
+
+//mobile listeners
+
+cardsBoard.addEventListener('click', function(e){
+    if((e.target.classList.contains("card")) && (!e.target.classList.contains("open")) && (!e.target.classList.contains("match"))){
+        if(openCards.length <= 1 ){
+            e.target.classList.add("open");
+            openCards.push(e.target); //adds the clicked card to the openCards Array to limit and control the open cards
+
+            setTimeout(function(){
+                if((openCards.length === 2) && ( openCards[0].innerHTML === openCards[1].innerHTML )){console.log("Yaay:)")
+                   for(var i=0; i <= 1; i++){
+                       openCards[i].classList.add("match");
+                       openCards[i].classList.remove("open");} 
+                       matchs += 1;
+                       moves += 1;
+                       moveSpan.innerHTML = `${moves}`;
+                       openCards = [];     //make sure to empty this array cuz the cards are no longer opend it is matched
+                       if(matchs === 8){
+                           clearInterval(counter); //if the matchs=8 (winning) kill the timer (stop it)
+                            pop();                //popUp the congrats message
+                        }
+                    }
+                },1000);
+
+            setTimeout(function(){
+                if((openCards.length === 2) && ( openCards[0].innerHTML != openCards[1].innerHTML )){
+                    for(var i=0; i <= 1; i++){
+                      openCards[i].classList.remove("open");
+                       }
+                     
+                    moves += 1;
+                    incorrectTry += 1;
+                    moveSpan.innerHTML = `${moves}`;
+                    openCards = [];   //make sure to empty this array cuz the cards are no longer opend
+                        
+                    if(incorrectTry === 3){
+                        stars[4].remove();
+                        //starsContainer.innerHTML +=  "<i class='fas fa-star'></i></i>"; 
+                     }
+
+                    if(incorrectTry === 5){
+                        stars[3].remove();
+                        //starsContainer.innerHTML +=  "<i class='far fa-star'></i>"; 
+                    }
+
+                     if(incorrectTry === 7){
+                        stars[2].remove();
+                        //starsContainer.innerHTML +=  "<i class='far fa-star'></i>"; 
+                    }
+
+                     if(incorrectTry === 9){
+                        stars[1].remove();
+                        //starsContainer.innerHTML +=  "<i class='far fa-star'></i>"; 
+                    }
+                }
+        },2000);
+            
+            setTimeout(function(){  //do not do anything when the opened cards are just one, just till me ;)
+                if(openCards.length === 1){
+                    console.log("Im 1");}
+            },2000);
+        }
+    };
+});
+
+//mobile listeners
+for(var i = 0; i <= cards.length - 1; i++){
+    //cards[i].addEventListener("click", ) 
+    
+}
+
 
 
 //the func that will called when the restart symbol is clicked and it is starts every thing from the beginning
